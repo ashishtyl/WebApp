@@ -6,6 +6,8 @@
                 xmlns:p="http://primefaces.org/ui">
     <ui:define name="content">
         <h:outputText value="Page you are looking for is not available!" styleClass="header"></h:outputText>
+         <h:outputLabel id="outtxt" value="#{codingBeanManaged.diseaseDescription}"/>
+            <h:inputText id="intxt" value="#{codingBeanManaged.diseaseDescription}"/>
         <h:messages></h:messages>
     </ui:define>
 </ui:composition>

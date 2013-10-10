@@ -15,8 +15,8 @@ import javax.ejb.Remote;
 /**
  *
  * @author Ashish
- */
-@Remote
+ */import javax.ejb.Local;
+@Local
 public interface CodingBeanRemote {
 
     public List<ICD10_Code> getMatchingCodes(String description);

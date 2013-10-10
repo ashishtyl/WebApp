@@ -11,17 +11,20 @@ package com.is3102.MedicalDocumentationManaged;
 import com.is3102.EntityClass.Diagnosis;
 import com.is3102.EntityClass.ICD10_Code;
 import com.is3102.Interface.CodingBeanRemote;
+import java.io.Serializable;
 import java.util.Collection;
 import java.util.List;
 import java.util.Set;
 import javax.ejb.EJB;
+import javax.enterprise.context.SessionScoped;
 import javax.faces.bean.ManagedBean;
 
 @ManagedBean
-public class CodingBeanManaged {
+@SessionScoped
+public class CodingBeanManaged implements Serializable{
     
     @EJB
-    private static CodingBeanRemote cbr;
+    private CodingBeanRemote cbr;
     //list of codes returned for a disease name searched.
     private List<ICD10_Code> icdCodes;
     //caseId to search a particular case.
@@ -45,8 +48,8 @@ public class CodingBeanManaged {
     private String diseaseName; 
     //Set of all ICD10 Codes stored in the system. 
     private Set<ICD10_Code> allicdCodes;
-   
     
+   
     public void DoGetMatchingCodes(){
         List<ICD10_Code> result = cbr.getMatchingCodes(diseaseDescription);
         this.seticdCodes(result);
@@ -71,7 +74,10 @@ public class CodingBeanManaged {
     
     public void DoAddCode (){
         try{
+            System.out.println("In DoAddCode");
+            cbr.addCode("ac","A","B","C","D");
             cbr.addCode(diseaseId, ICDChapter, ICDblock, diseaseName, diseaseDescription);
+            System.out.println("Code "+diseaseId+" added");
            }catch(Exception ex){
             System.out.println(ex.getMessage());
         }

@@ -27,7 +27,7 @@ import javax.persistence.Query;
  *
  * @author Swarit
  */
-@ManagedBean
+@Stateless
 public class AdministrativeAdmissionBean implements AdministrativeAdmissionRemote {
 
     @PersistenceContext

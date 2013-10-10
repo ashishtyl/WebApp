@@ -8,6 +8,7 @@ import com.is3102.EntityClass.Finding;
 import com.is3102.EntityClass.Medical_Procedure;
 import com.is3102.Exception.ExistException;
 import com.is3102.Interface.DecisionMakingandPlaningRemote;
+import java.io.Serializable;
 import java.util.List;
 import javax.ejb.EJB;
 import javax.faces.bean.ManagedBean;
@@ -18,7 +19,7 @@ import javax.faces.bean.ManagedBean;
  */
 
 @ManagedBean
-public class DecisionMakingandPlaningManaged {
+public class DecisionMakingandPlaningManaged implements Serializable{
     @EJB
     private static DecisionMakingandPlaningRemote dmp;
    

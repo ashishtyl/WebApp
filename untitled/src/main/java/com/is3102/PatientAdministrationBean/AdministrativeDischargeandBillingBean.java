@@ -14,7 +14,7 @@ import javax.faces.bean.ManagedBean;
  * @author Ashish
  */
 
-@ManagedBean
+@Stateless
 public class AdministrativeDischargeandBillingBean implements AdministrativeDischargeandBillingRemote  {
 
     // Add business logic below. (Right-click in editor and choose

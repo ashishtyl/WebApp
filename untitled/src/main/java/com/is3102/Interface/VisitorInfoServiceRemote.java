@@ -14,7 +14,8 @@ import javax.ejb.Remote;
  * @author Swarit
  */
 
-@Remote
+import javax.ejb.Local;
+@Local
 public interface VisitorInfoServiceRemote {
 
     public Bed retrievePatientInfo(String NRIC_PIN, String dateAdmitted) throws ExistException;

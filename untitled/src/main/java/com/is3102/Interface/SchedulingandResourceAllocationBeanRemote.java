@@ -17,7 +17,8 @@ import javax.ejb.Remote;
  *
  * @author Ashish
  */
-@Remote
+import javax.ejb.Local;
+@Local
 public interface SchedulingandResourceAllocationBeanRemote {
 
     public void addDoctor(String name, String dob, String username) throws ExistException;

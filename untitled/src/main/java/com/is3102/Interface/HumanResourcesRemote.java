@@ -4,13 +4,14 @@
  */
 package com.is3102.Interface;
 
+import javax.ejb.Local;
 import javax.ejb.Remote;
 
 /**
  *
  * @author Ashish
  */
-@Remote
+@Local
 public interface HumanResourcesRemote {
     
 }

@@ -8,6 +8,7 @@ import com.is3102.EntityClass.DischargeSummary;
 import com.is3102.EntityClass.Transfer;
 import com.is3102.Exception.CaseException;
 import com.is3102.Interface.DischargeAndTransferBean1Remote;
+import java.io.Serializable;
 import javax.ejb.EJB;
 import javax.faces.bean.ManagedBean;
 
@@ -16,7 +17,7 @@ import javax.faces.bean.ManagedBean;
  * @author Ashish
  */
 @ManagedBean
-public class DischargeandTransferManaged {
+public class DischargeandTransferManaged implements Serializable{
   @EJB
   private static DischargeAndTransferBean1Remote dt;
   

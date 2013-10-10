@@ -6,6 +6,7 @@ package com.is3102.MedicalDocumentationManaged;
 
 import com.is3102.EntityClass.Medical_Anamnesis;
 import com.is3102.Interface.MedicalAdmissionBean1Remote;
+import java.io.Serializable;
 import javax.ejb.EJB;
 import javax.faces.bean.ManagedBean;
 
@@ -14,7 +15,7 @@ import javax.faces.bean.ManagedBean;
  * @author Ashish
  */
 @ManagedBean
-public class MedicalAdmissionBeanManaged {
+public class MedicalAdmissionBeanManaged implements Serializable{
  @EJB
  private static MedicalAdmissionBean1Remote mab;
  

@@ -5,25 +5,13 @@
                 xmlns:ui="http://java.sun.com/jsf/facelets"
                 xmlns:p="http://primefaces.org/ui">
     <ui:define name="content">
-        <h:form>
-            <p:dataTable var="car" value="#{tableBean.carsSmall}">
-                <p:column headerText="Model">
-                    <h:outputText value="#{car.model}" />
-                </p:column>
+    
+    <h:form id="form">
+        
+         
+  
 
-                <p:column headerText="Year">
-                    <h:outputText value="#{car.year}" />
-                </p:column>
-
-                <p:column headerText="Manufacturer">
-                    <h:outputText value="#{car.manufacturer}" />
-                </p:column>
-
-                <p:column headerText="Color">
-                    <h:outputText value="#{car.color}" />
-                </p:column>
-            </p:dataTable>
-        </h:form>
-
+    </h:form>
+    
     </ui:define>
 </ui:composition>

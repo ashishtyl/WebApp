@@ -14,7 +14,8 @@ import javax.ejb.Remote;
  *
  * @author Ashish
  */
-@Remote
+import javax.ejb.Local;
+@Local
 public interface DecisionMakingandPlaningRemote {
 
     public void AddPlanedProcedure(Long CIN, String procedure_code, String procedure_name, Finding finding, String comments) throws ExistException;

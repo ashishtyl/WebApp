@@ -11,7 +11,6 @@ import com.is3102.Exception.CaseException;
 import com.is3102.Exception.ExistException;
 import com.is3102.Interface.MedicalAdmissionBean1Remote;
 import javax.ejb.Stateful;
-import javax.faces.bean.ManagedBean;
 import javax.persistence.EntityManager;
 import javax.persistence.PersistenceContext;
 
@@ -38,7 +37,7 @@ public class MedicalAdmissionBean1 implements MedicalAdmissionBean1Remote {
             throw new CaseException("Case does not exsit");
         return mcase;
     }
-    @Override
+    
     public void addAnamnesis(Long caseId, Long AnamnesisId, String diseaseHistory,
             String socialHistory, String medicalHistory,
             String familyHistory, String allergies, String symptoms) throws ExistException, CaseException{
@@ -54,12 +53,12 @@ public class MedicalAdmissionBean1 implements MedicalAdmissionBean1Remote {
         em.persist(mcase);
     }
     
-    @Override
+    
     public Medical_Anamnesis getAnamnesis(Long anamnesisId){
         return em.find(Medical_Anamnesis.class, anamnesisId);
        }
     
-    @Override
+    
     public void removeAnamnesis(Long anamnesisId){
        anamnesis=em.find(Medical_Anamnesis.class, anamnesisId);
        em.remove(anamnesis);

@@ -23,7 +23,7 @@ import javax.enterprise.context.SessionScoped;
 @ManagedBean
 @SessionScoped
 public class SchedulingandResourceAllocationManagedBean implements Serializable {
-
+    
     @EJB
     private static SchedulingandResourceAllocationBeanRemote sra;
 

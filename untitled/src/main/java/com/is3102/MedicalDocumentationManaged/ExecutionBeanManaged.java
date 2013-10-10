@@ -6,6 +6,7 @@ package com.is3102.MedicalDocumentationManaged;
 
 import com.is3102.EntityClass.ExecutionLog;
 import com.is3102.Interface.ExecutionRemote;
+import java.io.Serializable;
 import java.util.List;
 import javax.ejb.EJB;
 import javax.faces.bean.ManagedBean;
@@ -15,7 +16,7 @@ import javax.faces.bean.ManagedBean;
  * @author Ashish
  */
 @ManagedBean
-public class ExecutionBeanManaged {
+public class ExecutionBeanManaged implements Serializable{
 @EJB
 private static ExecutionRemote ex;
 //Id of procedure instance associate with a case

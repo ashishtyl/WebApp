@@ -8,13 +8,15 @@ import com.is3102.EntityClass.Diagnosis;
 import com.is3102.EntityClass.Medical_Anamnesis;
 import com.is3102.Exception.CaseException;
 import com.is3102.Exception.ExistException;
+import javax.ejb.Local;
 import javax.ejb.Remote;
 
 /**
  *
  * @author Ben
  */
-@Remote
+import javax.ejb.Local;
+@Local
 public interface MedicalAdmissionBean1Remote {
   
     public void addAnamnesis(Long caseId, Long AnamnesisId, String diseaseHistory,

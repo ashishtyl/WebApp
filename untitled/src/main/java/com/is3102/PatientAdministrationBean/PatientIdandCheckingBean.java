@@ -13,7 +13,7 @@ import javax.faces.bean.ManagedBean;
 import javax.persistence.EntityManager;
 import javax.persistence.PersistenceContext;
 
-@ManagedBean
+@Stateless
 public class PatientIdandCheckingBean implements PatientIdandCheckingRemote {
     
     @PersistenceContext

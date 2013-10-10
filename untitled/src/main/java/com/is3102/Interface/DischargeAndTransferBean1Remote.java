@@ -13,7 +13,8 @@ import javax.ejb.Remote;
  *
  * @author Ben
  */
-@Remote
+import javax.ejb.Local;
+@Local
 public interface DischargeAndTransferBean1Remote {
   
     public void generateDischargeSummary(Long caseId, String diagnosis, String findings,

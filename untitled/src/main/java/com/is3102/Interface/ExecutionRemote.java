@@ -13,7 +13,8 @@ import javax.ejb.Remote;
  *
  * @author Ashish
  */
-@Remote
+import javax.ejb.Local;
+@Local
 public interface ExecutionRemote {
 
     public void AddExecutionRecord(Long procedure_id, Long doctor_id, String exeuction_comment) throws ExistException;

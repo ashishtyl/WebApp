@@ -4,10 +4,13 @@
  */
 package com.is3102.Interface;
 
+import javax.ejb.Local;
+
 /**
  *
  * @author Ashish
  */
+@Local
 public interface AdministrativeDischargeandBillingRemote {
     
 }

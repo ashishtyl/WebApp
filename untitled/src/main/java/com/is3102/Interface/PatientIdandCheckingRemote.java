@@ -4,6 +4,7 @@
  */
 package com.is3102.Interface;
 
+import javax.ejb.Local;
 import javax.ejb.Remote;
 
 /**
@@ -11,7 +12,7 @@ import javax.ejb.Remote;
  * @author Swarit
  */
 
-@Remote
+@Local
 public interface PatientIdandCheckingRemote {
 
     public boolean checkRecurrence(String NRIC_PIN);

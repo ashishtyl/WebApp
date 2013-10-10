@@ -12,12 +12,13 @@ import javax.ejb.Remote;
 import com.is3102.Exception.ExistException;
 import java.text.ParseException;
 import java.util.List;
-
+import javax.ejb.Local;
+@Local
 /**
  *
  * @author Swarit
  */
-@Remote
+
 public interface AdministrativeAdmissionRemote {
 
     public String addPatient(String NRIC_PIN, String name, String birthday, String address, String cNumber) throws ExistException, ParseException, Exception;

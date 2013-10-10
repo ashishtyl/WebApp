@@ -28,7 +28,7 @@ import javax.faces.bean.ManagedBean;
  * @author Ashish
  */
 
-@ManagedBean
+@Stateless
 public class SchedulingandResourceAllocationBean implements SchedulingandResourceAllocationBeanRemote {
 
 

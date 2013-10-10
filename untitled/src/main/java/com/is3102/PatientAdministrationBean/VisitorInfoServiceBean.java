@@ -28,7 +28,7 @@ import org.joda.time.Days;
 
 @Stateless
 public class VisitorInfoServiceBean implements VisitorInfoServiceRemote {
-    @EJB
+        @EJB
     public static AdministrativeAdmissionRemote adminadm;
     
     @PersistenceContext
