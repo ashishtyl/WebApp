@@ -65,8 +65,12 @@
                 <configuration>
                     <source>1.6</source>
                     <target>1.6</target>
+                    <showDeprecation>false</showDeprecation>
                 </configuration>
             </plugin>
         </plugins>
     </build>
+    <properties>
+        <netbeans.hint.deploy.server>gfv3ee6</netbeans.hint.deploy.server>
+    </properties>
 </project>

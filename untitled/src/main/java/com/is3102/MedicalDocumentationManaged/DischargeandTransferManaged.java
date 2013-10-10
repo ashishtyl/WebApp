@@ -19,7 +19,7 @@ import javax.faces.bean.ManagedBean;
 @ManagedBean
 public class DischargeandTransferManaged implements Serializable{
   @EJB
-  private static DischargeAndTransferBean1Remote dt;
+  private DischargeAndTransferBean1Remote dt;
   
   //case id to search case
   private Long caseId;

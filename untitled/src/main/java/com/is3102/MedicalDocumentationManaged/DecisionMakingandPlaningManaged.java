@@ -21,7 +21,7 @@ import javax.faces.bean.ManagedBean;
 @ManagedBean
 public class DecisionMakingandPlaningManaged implements Serializable{
     @EJB
-    private static DecisionMakingandPlaningRemote dmp;
+    private DecisionMakingandPlaningRemote dmp;
    
     //case identifaction number to search for a case
     private Long CIN;
@@ -32,7 +32,7 @@ public class DecisionMakingandPlaningManaged implements Serializable{
     //{rocedure name for them to enter when entering a new procedure
     private String procedure_name;
     //Finidng entity to create a new pro
-    private Finding finding;
+    private String finding;
     //comments for doctor to add when adding a new procedure
     private String comments;
     //Procedure id to add patient consent to a procedure
@@ -42,15 +42,18 @@ public class DecisionMakingandPlaningManaged implements Serializable{
     //List of medical procedures associated with a Case. 
     private List<Medical_Procedure> medicalProcedures;
 
-    public void DoAddPlannedProcedure(){
+    public void doAddPlannedProcedure(){
+        System.out.println("In managed bean DoAddPlannedProcedure");
         try{
+            System.out.println("Enter try");
             dmp.AddPlanedProcedure(CIN, procedure_code, procedure_name, finding, comments);
+            System.out.println("Leave try");
         }catch(Exception ex){
             System.out.println(ex.getMessage());
         }
     }
     
-    public void DoGetConsent(){
+    public void doGetConsent(){
         try{
             dmp.GetConsent(procedureId, patient_comment);
         }catch(Exception ex){
@@ -58,10 +61,16 @@ public class DecisionMakingandPlaningManaged implements Serializable{
         }
     }
     
-    public void DoRetrieveCarePlaning(){
+    public void doRetrieveCarePlaning(){
+        System.out.println("In Managed bean");
         try {
-        List<Medical_Procedure> result = dmp.RetrieveCarePlaning(PIN);
+        System.out.println("in try");    
+        List<Medical_Procedure> result = dmp.RetrieveCarePlaning(CIN);
+                System.out.println("list returned");
+
         this.setMedicalProcedures(result);
+                System.out.println("Resutls set");
+
         }catch(Exception ex){
             System.out.println(ex.getMessage());
         }
@@ -100,11 +109,11 @@ public class DecisionMakingandPlaningManaged implements Serializable{
         this.procedure_name = procedure_name;
     }
 
-    public Finding getFinding() {
+    public String getFinding() {
         return finding;
     }
 
-    public void setFinding(Finding finding) {
+    public void setFinding(String finding) {
         this.finding = finding;
     }
 

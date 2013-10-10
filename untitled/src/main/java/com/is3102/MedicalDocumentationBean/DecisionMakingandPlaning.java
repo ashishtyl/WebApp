@@ -27,18 +27,22 @@ public class DecisionMakingandPlaning implements DecisionMakingandPlaningRemote{
   @PersistenceContext()
     EntityManager em;
 
-    public void AddPlanedProcedure(Long CIN, String procedure_code, String procedure_name, Finding finding, String comments ) throws ExistException{
-        
+    public void AddPlanedProcedure(Long CIN, String procedure_code, String procedure_name, String finding, String comments ) throws ExistException{
+       System.out.println("In DMP Bean AddPlannedProcedure"); 
         mCase mcase = em.find(mCase.class, CIN);
         if(mcase==null){
             throw new ExistException("No such case exists");
         }
-        
+        System.out.println("Mcase found");
         Medical_Procedure procedure = new Medical_Procedure();
+        System.out.println("created procedure");
         procedure.create(procedure_code, procedure_name, finding, comments);        
+        System.out.println("created procedure 2");
         mcase.addmedicaProcedure(procedure);
+         System.out.println("added procedure");
         procedure.setMcase(mcase);
-        
+         System.out.println("set mcase");
+         
         System.out.println("Medical Procedure " + procedure.getId() + 
                 "added to case " + mcase.getCIN());
         
@@ -58,14 +62,17 @@ public class DecisionMakingandPlaning implements DecisionMakingandPlaningRemote{
         
     }
     
-    public List<Medical_Procedure> RetrieveCarePlaning (Long PIN) throws ExistException{
+    public List<Medical_Procedure> RetrieveCarePlaning (Long CIN) throws ExistException{
+        System.out.println("In DNP EJB");
         List<Medical_Procedure> procedures;
         
-        mCase mcase = em.find(mCase.class, PIN);
+        mCase mcase = em.find(mCase.class, CIN);
         if(mcase==null){
             throw new ExistException("No such case exists!");
         }
+        System.out.println("mCase found");
         procedures = mcase.getmProcedures();
+        System.out.println("Returning procedures");
         return procedures;
     }
     

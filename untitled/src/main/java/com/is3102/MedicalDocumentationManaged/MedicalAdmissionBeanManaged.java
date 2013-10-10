@@ -17,7 +17,7 @@ import javax.faces.bean.ManagedBean;
 @ManagedBean
 public class MedicalAdmissionBeanManaged implements Serializable{
  @EJB
- private static MedicalAdmissionBean1Remote mab;
+ private MedicalAdmissionBean1Remote mab;
  
     private Long caseId;
     private Long AnamnesisId;

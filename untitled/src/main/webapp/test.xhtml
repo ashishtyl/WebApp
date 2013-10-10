@@ -5,12 +5,47 @@
                 xmlns:ui="http://java.sun.com/jsf/facelets"
                 xmlns:p="http://primefaces.org/ui">
     <ui:define name="content">
-    
-    <h:form id="form">
         
-         
-  
+    <h:form id="form">
+        <panel>
+        <h1>Add Procedure To Case</h1>  
+        <h:panelGrid columns="2">
+        <h:outputText value="Case ID: "/>
+        <p:inputText value="#{decisionMakingandPlaningManaged.CIN}"  label="Case ID"/>
 
+        <h:outputText value="Procedure code: "/>
+        <p:inputText value="#{decisionMakingandPlaningManaged.procedure_code}" label="Procedure ID"/>
+  
+        <h:outputText value="Procedure Name: "/>
+        <p:inputText value="#{decisionMakingandPlaningManaged.procedure_name}" label="Procedure Name"/>
+  
+        <h:outputText value="Findings: "/>
+        <p:inputText value="#{decisionMakingandPlaningManaged.finding}" label="Findings"/>
+  
+        <h:outputText value="Comments: "/>
+        <p:inputText value="#{decisionMakingandPlaningManaged.comments}" label="Comments"/>
+        
+        </h:panelGrid>    
+        <p:commandButton value="Submit" actionListener="#{decisionMakingandPlaningManaged.doAddPlannedProcedure}" />
+        </panel>
+        <panel>
+            <h1>List Procedures of Case</h1> 
+            <h:outputText value="Case ID: " />
+            <p:inputText value="#{decisionMakingandPlaningManaged.CIN}" label="Case ID" />
+            <p:commandButton value="Submit" actionListener="#{decisionMakingandPlaningManaged.doRetrieveCarePlaning}" />
+            
+            <p:dataTable id="datatableProcedureList" var="procedures" value="#{decisionMakingandPlaningManaged.medicalProcedures}">
+                <p:column>
+                    <h:outputText value="#{procedures.Date}" />                               
+                </p:column>
+                <p:column>
+                    <h:outputText value="#{procedures.code}"/>
+                </p:column>
+                <p:column>
+                    <h:outputText value="#{procedures.comments}"/>
+                </p:column>    
+            </p:dataTable>
+        </panel>
     </h:form>
     
     </ui:define>

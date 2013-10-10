@@ -65,18 +65,19 @@ public class Medical_Procedure implements Serializable {
     
     public Medical_Procedure () {}
     
-    public void create(String code, String name, Finding finding, String comments){
+    public void create(String code, String name, String findingDescription, String comments){
         Date date = new Date();
         this.setDate(date);
         this.setCode(code);
         this.setName(name);
+        Finding finding = new Finding();
+        finding.setDescription(findingDescription);
         this.setFinding(finding);
         this.setComments(comments);
         
     }
     
-   
-    
+
     public Long getId() {
         return getMpId();
     }

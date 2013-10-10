@@ -18,7 +18,7 @@ import javax.faces.bean.ManagedBean;
 @ManagedBean
 public class ExecutionBeanManaged implements Serializable{
 @EJB
-private static ExecutionRemote ex;
+private ExecutionRemote ex;
 //Id of procedure instance associate with a case
 private Long procedure_id; 
 //Doctor id
