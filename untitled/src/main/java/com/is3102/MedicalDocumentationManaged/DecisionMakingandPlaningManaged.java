@@ -11,7 +11,10 @@ import com.is3102.Interface.DecisionMakingandPlaningRemote;
 import java.io.Serializable;
 import java.util.List;
 import javax.ejb.EJB;
+import javax.faces.application.FacesMessage;
 import javax.faces.bean.ManagedBean;
+import javax.faces.context.FacesContext;
+import javax.faces.event.ActionEvent;
 
 /**
  *
@@ -42,14 +45,18 @@ public class DecisionMakingandPlaningManaged implements Serializable{
     //List of medical procedures associated with a Case. 
     private List<Medical_Procedure> medicalProcedures;
 
-    public void doAddPlannedProcedure(){
+    public void doAddPlannedProcedure(ActionEvent actionEvent){
+        FacesContext context = FacesContext.getCurrentInstance();
         System.out.println("In managed bean DoAddPlannedProcedure");
         try{
             System.out.println("Enter try");
             dmp.AddPlanedProcedure(CIN, procedure_code, procedure_name, finding, comments);
             System.out.println("Leave try");
+            context.addMessage(null, new FacesMessage("Procedure " + procedure_code + " for " + CIN + " successfully added!"));
         }catch(Exception ex){
             System.out.println(ex.getMessage());
+            context.addMessage(null, new FacesMessage(FacesMessage.SEVERITY_WARN, ex.getMessage(), null));
+            context.addMessage(null, new FacesMessage(FacesMessage.SEVERITY_ERROR, "Procedure could not be added!", null));
         }
     }
     

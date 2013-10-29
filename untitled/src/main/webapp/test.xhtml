@@ -7,12 +7,15 @@
     <ui:define name="content">
         
     <h:form id="form">
+        <p:growl id="growl" showDetail="true" sticky="true" />
+        
         <panel>
         <h1>Add Procedure To Case</h1>  
         <h:panelGrid columns="2">
+            
         <h:outputText value="Case ID: "/>
         <p:inputText value="#{decisionMakingandPlaningManaged.CIN}"  label="Case ID"/>
-
+       
         <h:outputText value="Procedure code: "/>
         <p:inputText value="#{decisionMakingandPlaningManaged.procedure_code}" label="Procedure ID"/>
   
@@ -26,13 +29,16 @@
         <p:inputText value="#{decisionMakingandPlaningManaged.comments}" label="Comments"/>
         
         </h:panelGrid>    
-        <p:commandButton value="Submit" actionListener="#{decisionMakingandPlaningManaged.doAddPlannedProcedure}" />
+
+        <p:commandButton value="Submit" actionListener="#{decisionMakingandPlaningManaged.doAddPlannedProcedure}" update=":form:growl" />
+
         </panel>
+        
         <panel>
             <h1>List Procedures of Case</h1> 
             <h:outputText value="Case ID: " />
             <p:inputText value="#{decisionMakingandPlaningManaged.CIN}" label="Case ID" />
-            <p:commandButton value="Submit" actionListener="#{decisionMakingandPlaningManaged.doRetrieveCarePlaning}" />
+            <p:commandButton value="Submit" actionListener="#{decisionMakingandPlaningManaged.doRetrieveCarePlaning}" update=":form:datatableProcedureList"/>
             
             <p:dataTable id="datatableProcedureList" var="procedures" value="#{decisionMakingandPlaningManaged.medicalProcedures}">
                 <p:column>

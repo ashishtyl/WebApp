@@ -38,6 +38,9 @@ public class DecisionMakingandPlaning implements DecisionMakingandPlaningRemote{
         System.out.println("created procedure");
         procedure.create(procedure_code, procedure_name, finding, comments);        
         System.out.println("created procedure 2");
+        
+        em.persist(procedure);
+        
         mcase.addmedicaProcedure(procedure);
          System.out.println("added procedure");
         procedure.setMcase(mcase);
