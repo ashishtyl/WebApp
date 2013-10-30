@@ -86,7 +86,6 @@ public class mCase implements Serializable {
         this.dateDischarged = dateDischarged;
     }
 
-
     public List<Medical_Procedure> getmProcedures() {
         return mProcedures;
     }
@@ -117,6 +116,10 @@ public class mCase implements Serializable {
 
     public void setnProcedures(List<Nursing_Procedure> nProcedures) {
         this.nProcedures = nProcedures;
+    }
+    
+    public void addnProcedure (Nursing_Procedure nprocedure){
+        this.getnProcedures().add(nprocedure);
     }
     
     public Bed getBed() {
@@ -163,8 +166,7 @@ public class mCase implements Serializable {
     public void setNursingAnamnesis(Nursing_Anamnesis nursingAnamnesis) {
         this.nursingAnamnesis = nursingAnamnesis;
     }
-
-    
+   
     public Collection<Diagnosis> getDiagnosis(){
         return diagnosis;
     }

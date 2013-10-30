@@ -20,16 +20,15 @@ import javax.faces.event.ActionEvent;
  *
  * @author Ashish
  */
-
 @ManagedBean
-public class DecisionMakingandPlaningManaged implements Serializable{
+public class DecisionMakingandPlaningManaged implements Serializable {
+
     @EJB
     private DecisionMakingandPlaningRemote dmp;
-   
     //case identifaction number to search for a case
-    private Long CIN;
+    private String CIN;
     //Patient identification number to retrieve patient id
-    private Long PIN;
+    private String PIN;
     //Procedure code for doctors to enter when entering a new procedure
     private String procedure_code;
     //{rocedure name for them to enter when entering a new procedure
@@ -39,65 +38,57 @@ public class DecisionMakingandPlaningManaged implements Serializable{
     //comments for doctor to add when adding a new procedure
     private String comments;
     //Procedure id to add patient consent to a procedure
-    private Long procedureId;
+    private String procedureId;
     //Patient comment recorded at the time getting the consent. 
     private String patient_comment;
     //List of medical procedures associated with a Case. 
     private List<Medical_Procedure> medicalProcedures;
 
-    public void doAddPlannedProcedure(ActionEvent actionEvent){
+    public void doAddPlannedProcedure(ActionEvent actionEvent) {
         FacesContext context = FacesContext.getCurrentInstance();
-        System.out.println("In managed bean DoAddPlannedProcedure");
-        try{
+        System.out.println("In DoAddPlannedProcedure");
+        try {
+            Long cin = Long.valueOf(getCIN());
             System.out.println("Enter try");
-            dmp.AddPlanedProcedure(CIN, procedure_code, procedure_name, finding, comments);
+            dmp.AddPlanedProcedure(cin, procedure_code, procedure_name, finding, comments);
             System.out.println("Leave try");
-            context.addMessage(null, new FacesMessage("Procedure " + procedure_code + " for " + CIN + " successfully added!"));
-        }catch(Exception ex){
+            context.addMessage(null, new FacesMessage("Procedure " + procedure_code + " for " + getCIN() + " successfully added!"));
+        } catch (Exception ex) {
             System.out.println(ex.getMessage());
             context.addMessage(null, new FacesMessage(FacesMessage.SEVERITY_WARN, ex.getMessage(), null));
             context.addMessage(null, new FacesMessage(FacesMessage.SEVERITY_ERROR, "Procedure could not be added!", null));
         }
     }
-    
-    public void doGetConsent(){
-        try{
-            dmp.GetConsent(procedureId, patient_comment);
-        }catch(Exception ex){
-            System.out.println(ex.getMessage());
-        }
-    }
-    
-    public void doRetrieveCarePlaning(){
-        System.out.println("In Managed bean");
+
+    public void doGetConsent(ActionEvent actionEvent) {
+        System.out.println("In DoGetConsent");
+        FacesContext context = FacesContext.getCurrentInstance();
         try {
-        System.out.println("in try");    
-        List<Medical_Procedure> result = dmp.RetrieveCarePlaning(CIN);
-                System.out.println("list returned");
-
-        this.setMedicalProcedures(result);
-                System.out.println("Resutls set");
-
-        }catch(Exception ex){
+            Long pId = Long.valueOf(procedureId);
+            dmp.GetConsent(pId, patient_comment);
+            context.addMessage(null, new FacesMessage("Consent for " + procedureId + " successfully added!"));
+        } catch (Exception ex) {
             System.out.println(ex.getMessage());
+            context.addMessage(null, new FacesMessage(FacesMessage.SEVERITY_WARN, ex.getMessage(), null));
+            context.addMessage(null, new FacesMessage(FacesMessage.SEVERITY_ERROR, "Procedure could not be added!", null));
         }
-       
     }
 
-    public Long getCIN() {
-        return CIN;
-    }
-
-    public void setCIN(Long CIN) {
-        this.CIN = CIN;
-    }
-
-    public Long getPIN() {
-        return PIN;
-    }
-
-    public void setPIN(Long PIN) {
-        this.PIN = PIN;
+    public void doRetrieveCarePlaning() {
+        System.out.println("In doRetrieveCarePlaning");
+        FacesContext context = FacesContext.getCurrentInstance();
+        try {
+            System.out.println("in try");
+            Long cin = Long.valueOf(getCIN());
+            List<Medical_Procedure> result = dmp.RetrieveCarePlaning(cin);
+            System.out.println("list returned");
+            this.setMedicalProcedures(result);
+            System.out.println("Resutls set");
+        } catch (Exception ex) {
+            System.out.println(ex.getMessage());
+            context.addMessage(null, new FacesMessage(FacesMessage.SEVERITY_WARN, ex.getMessage(), null));
+            context.addMessage(null, new FacesMessage(FacesMessage.SEVERITY_ERROR, "Procedure could not be added!", null));
+        }
     }
 
     public String getProcedure_code() {
@@ -132,11 +123,11 @@ public class DecisionMakingandPlaningManaged implements Serializable{
         this.comments = comments;
     }
 
-    public Long getProcedureId() {
+    public String getProcedureId() {
         return procedureId;
     }
 
-    public void setProcedureId(Long procedureId) {
+    public void setProcedureId(String procedureId) {
         this.procedureId = procedureId;
     }
 
@@ -147,7 +138,7 @@ public class DecisionMakingandPlaningManaged implements Serializable{
     public void setPatient_comment(String patient_comment) {
         this.patient_comment = patient_comment;
     }
-      
+
     public List<Medical_Procedure> getMedicalProcedures() {
         return medicalProcedures;
     }
@@ -155,6 +146,32 @@ public class DecisionMakingandPlaningManaged implements Serializable{
     public void setMedicalProcedures(List<Medical_Procedure> medicalProcedures) {
         this.medicalProcedures = medicalProcedures;
     }
-    
-    
+
+    /**
+     * @return the CIN
+     */
+    public String getCIN() {
+        return CIN;
+    }
+
+    /**
+     * @param CIN the CIN to set
+     */
+    public void setCIN(String CIN) {
+        this.CIN = CIN;
+    }
+
+    /**
+     * @return the PIN
+     */
+    public String getPIN() {
+        return PIN;
+    }
+
+    /**
+     * @param PIN the PIN to set
+     */
+    public void setPIN(String PIN) {
+        this.PIN = PIN;
+    }
 }

@@ -47,7 +47,7 @@ public class CodingBean  implements CodingBeanRemote{
           throw new ExistException("No such Diagnosis entitiy exists!");
       }
       em.remove(diagnosis);
-      System.out.println("Diagnosis "+ diagnosisId);
+      System.out.println("Diagnosis "+ diagnosisId + " removed.");
       
   }
   //also works as add Diagnosis

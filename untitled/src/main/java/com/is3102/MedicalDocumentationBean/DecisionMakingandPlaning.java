@@ -78,8 +78,11 @@ public class DecisionMakingandPlaning implements DecisionMakingandPlaningRemote{
         System.out.println("Returning procedures");
         return procedures;
     }
-    
-    public void RetrieveMedicalKnowledge(){
+
+    @Override
+    public void RetrieveMedicalKnowledge() {
+        throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
     }
+  
     
 }
