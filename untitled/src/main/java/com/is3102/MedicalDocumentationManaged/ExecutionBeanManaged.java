@@ -30,7 +30,7 @@ private List<ExecutionLog> executionLogList;
 
    public void DoAddExecutionLog(){
       try{
-          ex.AddExecutionRecord(procedure_id, doctor_id, exeuction_comment);
+          ex.AddExecutionRecordMedical(procedure_id, doctor_id, exeuction_comment);
       }catch(Exception ex){
           System.out.println(ex.getMessage());
       }

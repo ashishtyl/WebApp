@@ -46,6 +46,24 @@ public class mCase implements Serializable {
     @OneToOne
     private DischargeSummary dischargeSummary;
     @OneToOne
+    private NursingDischarge nursingDischarge;
+
+    public Date getDateDischarged() {
+        return dateDischarged;
+    }
+
+    public void setDateDischarged(Date dateDischarged) {
+        this.dateDischarged = dateDischarged;
+    }
+
+    public NursingDischarge getNursingDischarge() {
+        return nursingDischarge;
+    }
+
+    public void setNursingDischarge(NursingDischarge nursingDischarge) {
+        this.nursingDischarge = nursingDischarge;
+    }
+    @OneToOne
     private Medical_Anamnesis medicalAnamnesis; 
     @OneToOne
     private Nursing_Anamnesis nursingAnamnesis; 

@@ -9,6 +9,7 @@ import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
+import javax.persistence.ManyToOne;
 
 /**
  *
@@ -20,6 +21,52 @@ public class NursingDischarge implements Serializable {
     @Id
     @GeneratedValue(strategy = GenerationType.AUTO)
     private Long id;
+    private String activityLevel;
+    private String diet;
+    private String woundcare;
+    
+    @ManyToOne
+    Doctor doctor;
+    
+    public void NusringDischarge(){}
+    
+    public void create(String activityLevel, String diet, String woundcare){
+        this.setActivityLevel(activityLevel);
+        this.setDiet(diet);
+        this.setWoundcare(woundcare);
+    }  
+
+    public Doctor getDoctor() {
+        return doctor;
+    }
+
+    public void setDoctor(Doctor doctor) {
+        this.doctor = doctor;
+    }
+
+    public String getActivityLevel() {
+        return activityLevel;
+    }
+
+    public void setActivityLevel(String activityLevel) {
+        this.activityLevel = activityLevel;
+    }
+
+    public String getDiet() {
+        return diet;
+    }
+
+    public void setDiet(String diet) {
+        this.diet = diet;
+    }
+
+    public String getWoundcare() {
+        return woundcare;
+    }
+
+    public void setWoundcare(String woundcare) {
+        this.woundcare = woundcare;
+    }
 
     public Long getId() {
         return id;
