@@ -76,6 +76,5 @@ public class NursingDecisionMakingandPlaning implements NursingDecisionMakingand
         procedures = mcase.getnProcedures();
         System.out.println("Returning procedures");
         return procedures;
-
     }
 }

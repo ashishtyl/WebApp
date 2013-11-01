@@ -19,7 +19,7 @@ import javax.persistence.PersistenceContext;
  * @author ashish
  */
 @Stateless
-public class DischargeAndTransferBean implements NursingDischargeAndTransferRemote {
+public class NursingDischargeAndTransfer implements NursingDischargeAndTransferRemote {
 
     // Add business logic below. (Right-click in editor and choose
     // "Insert Code > Add Business Method")
@@ -29,7 +29,7 @@ public class DischargeAndTransferBean implements NursingDischargeAndTransferRemo
     Transfer transfer;
     mCase mcase;
 
-    public DischargeAndTransferBean() {
+    public NursingDischargeAndTransfer() {
     }
 
     private mCase getCaseInfo(Long caseId) throws CaseException {

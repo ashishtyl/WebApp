@@ -14,23 +14,23 @@
                 <h:panelGrid columns="2">
 
                     <h:outputText value="Case ID: "/>
-                    <p:inputText value="#{decisionMakingandPlaningManaged.CIN}"  label="Case ID"/>
+                    <p:inputText value="#{DecisionMakingandPlaningManaged.CIN}"  label="Case ID"/>
 
                     <h:outputText value="Procedure code: "/>
-                    <p:inputText value="#{decisionMakingandPlaningManaged.procedure_code}" label="Procedure ID"/>
+                    <p:inputText value="#{DecisionMakingandPlaningManaged.procedure_code}" label="Procedure ID"/>
 
                     <h:outputText value="Procedure Name: "/>
-                    <p:inputText value="#{decisionMakingandPlaningManaged.procedure_name}" label="Procedure Name"/>
+                    <p:inputText value="#{DecisionMakingandPlaningManaged.procedure_name}" label="Procedure Name"/>
 
                     <h:outputText value="Findings: "/>
-                    <p:inputText value="#{decisionMakingandPlaningManaged.finding}" label="Findings"/>
+                    <p:inputText value="#{DecisionMakingandPlaningManaged.finding}" label="Findings"/>
 
                     <h:outputText value="Comments: "/>
-                    <p:inputText value="#{decisionMakingandPlaningManaged.comments}" label="Comments"/>
+                    <p:inputText value="#{DecisionMakingandPlaningManaged.comments}" label="Comments"/>
 
                 </h:panelGrid>    
 
-                <p:commandButton value="Submit" actionListener="#{decisionMakingandPlaningManaged.doAddPlannedProcedure}" update=":form1:growl" />
+                <p:commandButton value="Submit" actionListener="#{DecisionMakingandPlaningManaged.doAddPlannedProcedure}" update=":form1:growl" />
        </panel>
         </h:form>
         <h:form id="form2">
@@ -39,10 +39,10 @@
             <panel>
                 <h1>List Procedures of Case</h1> 
                 <h:outputText value="Case ID: " />
-                <p:inputText value="#{decisionMakingandPlaningManaged.CIN}" label="Case ID" />
-                <p:commandButton value="Submit" actionListener="#{decisionMakingandPlaningManaged.doRetrieveCarePlaning}" update=":form2:datatableProcedureList"/>
+                <p:inputText value="#{DecisionMakingandPlaningManaged.CIN}" label="Case ID" />
+                <p:commandButton value="Submit" actionListener="#{DecisionMakingandPlaningManaged.doRetrieveCarePlaning}" update=":form2:datatableProcedureList"/>
 
-                <p:dataTable id="datatableProcedureList" var="procedures" value="#{decisionMakingandPlaningManaged.medicalProcedures}">
+                <p:dataTable id="datatableProcedureList" var="procedures" value="#{DecisionMakingandPlaningManaged.medicalProcedures}">
                     <p:column>
                         <h:outputText value="#{procedures.Date}" />                               
                     </p:column>
